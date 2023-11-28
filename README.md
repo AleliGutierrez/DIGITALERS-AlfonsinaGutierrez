@@ -8,9 +8,9 @@ Contraseña: admin
 Nota: Para probar la opción "Eliminar perfil" crear un nuevo usuario en plataforma con el que hacer la prueba, admin no puede ser eliminado.
 
 Recursos empleados:
-​- Python 3.7.9
-​- Django 3.2.22
-​- Bootstrap 5.3 (se incluyeron componentes extraídos, como el footer y el perfil, desde mdbootstrap.com)
+- Python 3.7.9
+- Django 3.2.22
+- Bootstrap 5.3 (se incluyeron componentes extraídos, como el footer y el perfil, desde mdbootstrap.com)
 - ​SQLite
 
 
