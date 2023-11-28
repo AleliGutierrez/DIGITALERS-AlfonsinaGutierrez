@@ -30,7 +30,7 @@ Funcionalidades:
 
 - ​Operaciones CRUD: Aplicables a los modelos Product, Tag, Cliente, Domicilio y Perfil. Estas pueden ser realizadas tanto por usuarios registrados en plataforma como los registrados en el panel de administración de Django.
 - ​Visualización general de productos o filtrada por categoría y búsqueda.
-​- Sign up / Log in / Log out.
+- Sign up / Log in / Log out.
 
 
 Modelos: 
