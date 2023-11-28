@@ -38,11 +38,11 @@ Modelos:
   
 - ​Tag: Representa las categorías y etiquetas relacionadas a los productos. Cuenta con los siguientes atributos: name, product_list(Product/ManyToMany).
   
-​- Address: Representa el domicilio del cliente. Cuenta con los siguientes atributos: country, state, city, neighborhood, street, postal_code,  created, updated.
+- Address: Representa el domicilio del cliente. Cuenta con los siguientes atributos: country, state, city, neighborhood, street, postal_code,  created, updated.
 
 - ​Customer: Representa al cliente. Cuenta con los siguientes atributos: first_name, last_name, id_number, phone, address(Address/OneToOne), created, updated.
 Nota: Se eliminarán tanto cliente como domicilio, aunque es posible eliminar domicilio sin que afecte al cliente.
 
-​- Profile: Representa el perfil del usuario. Cuenta con los siguientes atributos: user(User/OnetoOne), avatar, created, updated.
+- Profile: Representa el perfil del usuario. Cuenta con los siguientes atributos: user(User/OnetoOne), avatar, created, updated.
 Nota: De eliminarse el perfil, se eliminara también el usuario asociado (no aplica a admin).
 
