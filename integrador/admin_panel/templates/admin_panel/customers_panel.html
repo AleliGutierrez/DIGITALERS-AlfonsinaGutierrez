@@ -1,0 +1,143 @@
+{% extends "base.html" %} 
+{% load static %}
+
+
+{% block title %}
+<title>Panel de Control</title>
+{% endblock title %}
+  
+{% block content %} 
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading text-success" style="font-family:'Caveat'; font-size:3em">Panel de administración de clientes</h1>
+      <p class="lead text-muted">Destinado a la visualización, creación, edición o eliminación de clientes o sus respectivos domicilios.</p>
+      <p>
+        <a href="{% url 'client-address-create' %}" class="btn btn-outline-light btn-warning my-2">Añadir nuevo cliente</a>
+      </p>
+    </div>
+  </section>
+
+
+   <!-- SEPARADOR -->
+  <div class="bg-light">
+    <br>
+  </div>
+
+<!-- ALBUM CLIENTES -->
+{% if customers %}
+<div class="album py-5 bg-light">
+  <div class="container">
+
+    <div class="row">
+
+      {% for customer in customers %}
+
+          <!-- INFORMACIÓN DEL CLIENTE -->
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <div class="card-body">
+                <div class="row bg-success">
+                  <p class="mb-0 text-center" style="font-family:'Caveat'; font-size:24px">{{customer.first_name}} {{customer.last_name}}</p>
+                  <p class="card-text text-center">{{product.description}}</p>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                  <p class="mb-0" style="font-family:'Caveat'; font-size:24px">DNI: </p>
+                  <p class="card-text text-center">{{ customer.id_number }}</p>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                  <p class="mb-0" style="font-family:'Caveat'; font-size:24px">Teléfono: </p>
+                  <p class="card-text text-center">{{ customer.phone }}</p>
+                </div>
+
+                <hr />
+                <!-- FIN INFORMACIÓN DEL CLIENTE -->
+
+                 <!-- GRUPO DE BOTONES -->
+                 <div class="d-flex justify-content-between align-items-left">
+                  <div class="btn-group mt-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                    onclick="window.location.href = '{% url 'client-update' customer.id %}'">
+                      Edit
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="window.location.href = '{% url 'client-delete' customer.id %}'">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+                <!-- FIN GRUPO DE BOTONES -->
+
+                 <!-- INFORMACIÓN DEL DOMICILIO DEL CLIENTE -->
+                {% if customer.address %}
+                <hr />
+
+                <div class="row">
+                  <p class="mb-0" style="font-family:'Caveat'; font-size:24px">Dirección: </p>
+                  <p class="card-text text-center">
+                    {{customer.address.street}}, {{customer.address.neighborhood}}, {{customer.address.city}},
+                    {{customer.address.state}}, {{customer.address.country}} {{customer.address.postal_code}}
+                  </p>
+                </div>
+
+                <hr />
+
+                <!-- GRUPO DE BOTONES -->
+                <div class="d-flex justify-content-between align-items-left">
+                  <div class="btn-group mt-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                    onclick="window.location.href = '{% url  'client-address-update' customer.address.id %}'">
+                      Edit
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="window.location.href = '{% url  'client-address-delete' customer.address.id %}'">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+                 <!-- FIN GRUPO DE BOTONES -->
+                {% else %}
+                <hr />
+
+                <div class="row">
+                  <p class="mb-0" style="font-family:'Caveat'; font-size:24px">Dirección: </p>
+                  <p class="card-text text-center">
+                    No se ha registrado.
+                  </p>
+                </div>
+
+                <hr />
+
+                <div class="d-flex justify-content-between align-items-left">
+                  <div class="btn-group mt-2">
+                  <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="window.location.href = '{% url 'address-create' customer.id %}'">
+                      Create
+                   </button>
+                  </div>
+                </div>
+                {% endif %}
+                <!-- FIN INFORMACIÓN DEL DOMICILIO DEL CLIENTE -->
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+    {% else %}
+    <div class="container text-center justify-content-center">
+      <h2 class="text">No hay clientes registrados</h2>
+    </div>
+  {% endif %}
+  <!-- FIN ALBUM CLIENTES -->
+
+</main>
+{% endblock content %} 

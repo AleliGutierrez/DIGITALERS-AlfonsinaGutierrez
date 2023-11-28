@@ -1,0 +1,65 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+    
+    {% block title %}
+    <title>Perfil</title>
+    {% endblock title %}
+
+{% block content %}
+<section class="h-100 gradient-custom-2">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card">
+            <div class="rounded-top text-white d-flex flex-row bg-warning" style="height:200px;">
+              <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                <img src="{{ profile.avatar.url }}"
+                  alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                  style="width: 150px; z-index: 1">
+
+                <button type="button" class="btn btn-outline-success" data-mdb-ripple-color="dark"
+                  style="z-index: 1;" onclick="window.location.href = '{% url 'profile-update' profile.id %}'">
+                  Editar Perfil
+                </button> 
+              </div>
+              <div class="ms-3" style="margin-top: 130px;">
+                <h5>{{ user.username }}</h5>
+                <p  class="small text-muted">{{ profile.created }}</p>
+              </div>
+            </div>
+            <div class="p-4 text-black" style="background-color: #f8f9fa;">
+              <div class="d-flex justify-content-end text-center py-1">
+                <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                  style="z-index: 1;" onclick="window.location.href = '{% url 'profile-delete' profile.id %}'">
+                  Eliminar Perfil
+                </button>
+                    <br>
+              </div>
+            </div>
+            <div class="card-body p-4 text-white">
+                <div class="m-5 bg-warning">
+                    <p class="lead fw-normal mb-1 text-center" style="font-family: 'Caveat'; font-size: 30px">Panel de Administración</p>
+                    <div class="p-4 d-flex justify-content-between" style="background-color: #f8f9fa;">
+                        <div>
+                            <button type="button" class="btn btn-outline-success" data-mdb-ripple-color="dark" style="z-index: 1;"
+                            onclick="window.location.href = '{% url 'client-panel' %}'">
+                                Clientes
+                            </button>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline-success" data-mdb-ripple-color="dark" style="z-index: 1;"
+                            onclick="window.location.href = '{% url 'product-panel' %}'">
+                                Productos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+    

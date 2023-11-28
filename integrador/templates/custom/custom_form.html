@@ -1,0 +1,15 @@
+{% block content %}
+  <form method="post" action="" class="m-5 flex-wrap text-center" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {{ form.as_p}}
+
+    {% if field.errors %}
+        {{ field.errors | striptags }}
+    {% endif %}
+    
+    <div class="text-center">
+      <button type="submit" action="POST" class="btn btn-warning">{{ message }}</button>
+    </div>
+  </form>  
+{% endblock %}

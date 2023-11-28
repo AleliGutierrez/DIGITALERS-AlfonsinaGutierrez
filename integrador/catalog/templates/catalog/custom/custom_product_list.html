@@ -1,0 +1,16 @@
+{% for product in products %}
+  <div class="card" style="width: 18rem">
+    <img src="{{ product.cover.url }}" class="card-img-top" alt="{{ product.name }}" />
+    <div class="card-body bg-success">
+      <h3 class="card-text text-warning" style="font-family:'Caveat'; font-size:2em">
+        {{ product.name }}
+      </h3>
+      <p class="card-text text-white">
+        ${{ product.price }}
+      </p>
+      <div class="container text-center">
+        <a href="{% url 'product' product.id %}" class="btn btn-outline-light btn-warning me-2 mt-4">Ver más</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}

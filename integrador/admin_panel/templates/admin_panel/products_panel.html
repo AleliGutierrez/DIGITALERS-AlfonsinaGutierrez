@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    <title>Panel de Control</title>
+{% endblock title %}
+
+
+{% block content %}
+
+  <main role="main">
+
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading text-success" style="font-family:'Caveat'; font-size:3em">Panel de administración de productos</h1>
+        <p class="lead text-muted">Destinado a la visualización, creación, edición o eliminación de productos y categorías.</p>
+        <p>
+          <a href="{% url 'product-create' %}" class="btn btn-outline-light btn-warning my-2">Crear nuevo producto</a>
+          <a href="{% url 'tag-create' %}" class="btn btn-outline-light btn-warning my-2">Crear nueva categoría</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="bg-light">
+      <br>
+    </div>    
+
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h2 class="jumbotron-heading text-success" style="font-family:'Caveat'; font-size:3em">Productos</h2>
+      </div>
+    </section>
+
+
+    <!-- ALBUM PRODUCTOS -->
+    {% if products %}
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row">
+          {% for product in products %}
+
+           <!-- INFORMACIÓN DEL CLIENTE -->
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" src="{{ product.cover.url }}" alt="{{ product.name }}">
+              <div class="card-body">
+
+                <div class="row bg-secondary">
+                  <p class="mb-0 text-center" style="font-family:'Caveat'; font-size:24px">{{product.name}}</p>
+                </div>
+      
+                <hr />
+
+                <div class="row">
+                  <p class="mb-0" style="font-family:'Caveat'; font-size:24px">Precio:</p>
+                  <p class="card-text text-center">${{product.price}}</p>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                  <p class="mb-0" style="font-family:'Caveat'; font-size:24px">Inventario:</p>
+                  <p class="card-text text-center">{{product.inventory}} unidades</p>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <p class="mb-0" style="font-family:'Caveat'; font-size:24px">Descripción:</p>
+                    <p class="card-text text-center">{{product.description}}</p>
+                </div>
+                <!-- FIN INFORMACIÓN DEL CLIENTE -->
+
+                <hr />
+
+                <!-- GRUPO DE BOTONES -->
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group mt-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="window.location.href = '{% url 'product' product.id %}'">
+                      View
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="window.location.href = '{% url 'product-update' product.id %}'">
+                      Edit
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="window.location.href = '{% url 'product-delete' product.id %}'">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+                <!-- FIN GRUPO DE BOTONES -->
+
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+        {% else %}
+        
+        <div class="container text-center justify-content-center">
+          <h2 class="text">No hay productos registrados</h2>
+        </div>
+
+        {% endif %}
+
+        </div>
+      </div>
+    </div>
+ <!-- FIN ALBUM PRODUCTOS -->
+
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h2 class="jumbotron-heading text-success" style="font-family:'Caveat'; font-size:3em">Categorías</h2>
+      </div>
+    </section>
+
+
+    <!-- ALBUM CATEGORIAS -->
+    {% if tags %}
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row">
+          {% for tag, products in tags_with_products.items %}
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <div class="card-body">
+                <div class="row bg-warning">
+                  <p class="mb-0 text-center" style="font-family:'Caveat'; font-size:24px">{{tag.name}}</p>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                  <p class="mb-0" style="font-family:'Caveat'; font-size:24px">Productos:</p>
+                  <div class="d-flex">
+                  
+                  
+                  {% if products %}
+                    {% for product in products %}
+                      <p class="card-text text-center">
+                        {{product.name}}{% if not forloop.last %},<span style="margin-right: 10px;"></span>{% endif %}
+                      </p>
+                    {% endfor %}
+                  {% else %}
+                    <p class="card-text text-center">
+                      Sin productos asociados.
+                    </p>
+                  {% endif %}
+                    
+                  </div>
+                </div>
+
+                <hr />
+
+                <!-- GRUPO DE BOTONES -->
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group mt-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="window.location.href = '{% url 'category' tag.id %}'">
+                      View
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="window.location.href = '{% url 'tag-update' tag.id %}'">
+                      Edit
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="window.location.href = '{% url 'tag-delete' tag.id %}'">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+                <!-- FIN GRUPO DE BOTONES -->
+
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        {% else %}
+        <div class="container text-center justify-content-center">
+          <h2 class="text">No hay categorías registradas</h2>
+        </div>
+        {% endif %}
+        <!-- FIN ALBUM CATEGORIAS -->
+        </div>
+      </div>
+    </div>
+    <!-- FIN ALBUM CATEGORIAS -->
+  </main>
+{% endblock %}

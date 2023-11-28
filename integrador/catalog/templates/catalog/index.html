@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="card-group mb-2">
+        <div class="card bg-warning">
+          <img
+            src="{% static 'img/terrario-mascota-4.jpeg' %}"
+            class="card-img-top"
+            alt="Terrario Mascota"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-center" style="font-family:'Caveat'; font-size:2em">Terra</h5>
+            <p class="card-text text-center">
+              Exóticas plantas, materiales duraderos y la ventilación idónea:
+              Un ecosistema próspero para el cuidado de tus plantas y animales.
+            </p>
+            <div class="container text-center">
+              <a href="{% url 'category' terrario.id %}" class="btn btn-outline-light btn-success me-2 mt-4">Terrarios</a>
+            </div>
+          </div>
+        </div>
+        <div class="card bg-success">
+          <img src="{% static 'img/terrario-4.jpeg' %}" class="card-img-top"
+          alt=Terrario" />
+          <div class="card-body">
+            <h5 class="card-title text-white text-center" style="font-family:'Caveat'; font-size:2em">Deco</h5>
+            <p class="card-text text-white text-center" style="font-family:'Caveat'; font-size:22px">
+              Ofrécele una fusión de estilo y naturaleza a tu hogar. 
+            </p>
+            <div class="container text-center">
+              <a href="{% url 'category' decoracion.id %}" class="btn btn-outline-light btn-warning me-2 mt-4">Decoración</a>
+            </div>
+          </div>
+        </div>
+        <div class="card bg-warning" style="background-color: #c68c53">
+          <img
+            src="{% static 'img/aquaterrario-4.jpeg' %}"
+            class="card-img-top"
+            alt="Pecera"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-center" style="font-family:'Caveat'; font-size:2em">Aqua</h5>
+            <p class="card-text text-center">
+              Variedad de diseños, eficientes sistemas de filtración e 
+              iluminación LED personalizable: Un entorno seguro y agradable para tus peces y plantas.
+            </p>
+            <div class="container text-center">
+              <a href="{% url 'category' acuario.id %}" class="btn btn-outline-light btn-success me-2 mt-1">Peceras</a>
+            </div>  
+          </div>
+        </div>
+      </div>
+  
+{% endblock content %}
+    

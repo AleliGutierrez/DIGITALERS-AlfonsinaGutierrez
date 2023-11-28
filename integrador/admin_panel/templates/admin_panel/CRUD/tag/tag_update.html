@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Editar categoría</title>
+{% endblock title %}
+
+{% block content %}
+{% include "custom/custom_form.html" with form=form message=message %}   
+{% endblock %}
