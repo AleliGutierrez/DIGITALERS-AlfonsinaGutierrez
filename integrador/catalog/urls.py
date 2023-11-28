@@ -16,6 +16,9 @@ urlpatterns = [
     #BÚSQUEDAS
     path('search/', views.search_view, name='search'),
     path('products/<str:search_query>/', views.ProductList.as_view(), name='product-search'),
+    
+    #ABOUT
+    path('about/', views.AboutView.as_view(), name='about'),
 ] 
 
 if settings.DEBUG: 

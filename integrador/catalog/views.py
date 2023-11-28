@@ -84,7 +84,7 @@ class ProductDetailView(DetailView):
        return models.Product.objects.get(pk=product_id)
 
 
-
+#BÚSQUEDA
 def search_view(request):
     """
     Si se ha enviado un formulario, se evalúa que sea válido y se busca productos o tags que contengan 
@@ -108,5 +108,9 @@ def search_view(request):
             
     return redirect(request.META.get('HTTP_REFERER', 'home'))    
         
+    
+#ABOUT
+class AboutView(TemplateView):
+    template_name = "catalog/about.html"
     
     
