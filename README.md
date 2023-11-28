@@ -14,8 +14,8 @@ Recursos empleados:
 - ​SQLite
 
 
-Librerías incluidas:
-​- Django (junto a sus librerías asociadas)
+Librerías iincluidas
+- Django (junto a sus librerías asociadas)
 - ​Pillow (junto a sus librerías asociadas)
 
 
