@@ -2,9 +2,9 @@
 
 El sitio web está destinado a la venta de terrarios a modo decorativo o con el fin de hacer de hogar para una mascota, como peces o animales pequeños.
 
-Usuario Administrador: 
-Nombre: admin
-Contraseña: admin
+Usuario Administrador:
+user: admin
+password: admin
 Nota: Para probar la opción "Eliminar perfil" crear un nuevo usuario en plataforma con el que hacer la prueba, admin no puede ser eliminado.
 
 Recursos empleados:
