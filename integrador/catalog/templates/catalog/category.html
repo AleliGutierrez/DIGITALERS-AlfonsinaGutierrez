@@ -4,28 +4,30 @@
 
 {% block title %}
    <title>
+
     {% if tag.id %}
        {{ tag.name }}
     {% else %}
        Productos
     {% endif %}
+
    </title>
 {% endblock title %}
     
 {% block content %}
-
-{% if product_list %}
-<div id="product-list" data-product-list="{{ product_list|safe }}" class="d-flex flex-wrap justify-content-center">
-  {% include "catalog/custom/custom_product_list.html" with products=product_list %}
-</div>
-{% else %}
-<div class="container m-5 text-center">
-  <h2 class="text-warning" style="font-family: 'Caveat'; font-size: 3em">
-    No hay productos disponibles
-  </h2>
-  <br/>
-  <p class="text-secondary">¡Esté al pendiente de novedades!</p>
-</div>
-{% endif %} 
+  <!-- LISTADO DE PRODUCTOS -->
+  {% if product_list %}
+    <div id="product-list" data-product-list="{{ product_list|safe }}" class="d-flex flex-wrap justify-content-center">
+      {% include "catalog/custom/custom_product_list.html" with products=product_list %}
+    </div>
+  {% else %}
+    <div class="container m-5 text-center">
+      <h2 class="text-warning" style="font-family: 'Caveat'; font-size: 3em">
+       No hay productos disponibles
+      </h2>
+      <br/>
+      <p class="text-secondary">¡Esté al pendiente de novedades!</p>
+    </div>
+  {% endif %} 
 
 {% endblock content %}
